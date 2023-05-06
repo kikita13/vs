@@ -6,6 +6,7 @@ import Input from "./input";
 const Menubar = (props) => {
 
   const { setPosts, setGroup } = props;
+  const [valueFilterWord, setValueFilterWord] = useState('')
   const [valueId, setValueId] = useState("");
   const [valueFirstName, setValueFirstName] = useState("");
   const [valueLastName, setValueLastName] = useState("");
@@ -35,6 +36,12 @@ const Menubar = (props) => {
         styles={styles}
         valueCity={valueCity}
         setValue={setValueCity}
+      />      
+      <Input
+        text="Filter"
+        styles={styles}
+        valueCity={valueFilterWord}
+        setValue={setValueFilterWord}
       />
       <Button
         text="Start"

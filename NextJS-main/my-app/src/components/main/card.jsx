@@ -1,5 +1,6 @@
 import { ICONS } from "@/consts/consts";
 import styles from "@/styles/mainCard.module.css";
+import Image from "next/image";
 
 export const Card = (props) => {
   const { data, group } = props;
