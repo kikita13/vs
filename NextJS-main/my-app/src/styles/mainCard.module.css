@@ -41,19 +41,18 @@
     gap: 4px;
 }
 
-.icon {
-}
+.icon {}
 
 .footer {
     padding: 12px 0;
     align-items: center;
     justify-content: space-between;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .text {
-    padding: 8px 0px;
+    padding: 8px 0 0 0;
     color: var(--text-color-primery);
     font-size: 13px;
 }
@@ -72,12 +71,17 @@
     object-fit: contain;
 }
 
+.cards {
+    max-width: 100%;
+}
+
 .card {
+    width: 100%;
+    max-width: 100%;
     border: 1px solid var(--border-cards-color);
     border-radius: 1rem;
     background-color: var(--bgcolor-secondary);
     padding: 16px 20px 0px 20px;
-    min-width: 100%;
 }
 
 .activities {
@@ -90,7 +94,7 @@
 
 }
 
-#target{
+#target {
     cursor: pointer;
     transition: .3s ease;
 }
@@ -98,4 +102,3 @@
 #target:hover {
     font-size: 16px;
 }
-
