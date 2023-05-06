@@ -1,14 +1,14 @@
-import  {fetchPosts}  from '@/store/slices/postSlice';
+import { fetchGroup } from '@/store/slices/groupSlice';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const index = () => {
     const dispatch = useDispatch()
-    const post = useSelector(state => state.posts.posts)
+    const group = useSelector(state => state.group.group)
 
     return (
-        <div onClick={() => {dispatch(fetchPosts());}}>a
-            {post?.map(data => (<div>{data.id}</div>))}
+        <div onClick={() => {dispatch(fetchGroup('1'));}}>a
+            {group.name}
         </div>
     );
 };
