@@ -8,6 +8,7 @@ const Body = (props) => {
       <div className={styles.attachments}>
         {posts.attachments.map((atach) => (
           <img
+            key={posts.id}
             className={styles.img}
             src={
               atach.photo?.sizes[Math.max(atach.photo?.sizes.length - 1)].url
