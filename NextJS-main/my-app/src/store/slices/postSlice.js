@@ -2,11 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TOKEN } from "@/consts/consts";
 import $ from "jquery";
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
-  const count = 100; 
-  const maxPosts = 1000;
-  let offset = 0; 
+  const count = 100;
+  const maxPosts = 100;
+  let offset = 0;
 
   let allPosts = [];
+  let allProfiles = [];
 
   try {
     while (allPosts.length < maxPosts) {
@@ -16,26 +17,23 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
         dataType: "jsonp",
       });
 
-      const items = response?.response?.items;
-      const profiles = response?.response?.profiles;
+      const posts = response?.response?.items;
+      const newProfiles = response?.response?.profiles;
 
-      const result = items?.map((post) => {
-        const profile = profiles?.find(
-          (profile) => profile.id === post.from_id
-        );
-        return { ...profile, ...post };
-      });
+      allPosts = allPosts.concat(posts);
+      allProfiles = allProfiles.concat(newProfiles);
 
-      allPosts = allPosts.concat(result);
-
-      if (items.length < count) {
+      if (posts.length < count) {
         break;
       }
 
       offset += count;
     }
 
-    return allPosts;
+    return {
+      posts: allPosts,
+      profiles: allProfiles,
+    };
   } catch (error) {
     throw new Error(error);
   }
@@ -43,6 +41,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
 
 const initialState = {
   posts: [],
+  profiles: [],
   status: "Ожидание запроса",
   error: null,
 };
@@ -57,7 +56,8 @@ const postsSlice = createSlice({
     });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.status = "Ответ получен";
-      state.posts = action.payload;
+      state.posts = action.payload.posts;
+      state.profiles = action.payload.profiles;
       state.error = null;
     });
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "./head";
-import Body from "./body";
+import Body from "./body/body";
 import Footer from "./footer/footer";
 import styles from "@/styles/mainCard.module.css";
 

@@ -1,9 +1,9 @@
-
 import { openPage } from "@/consts/links";
 import React from "react";
 
 const Head = (props) => {
     const { styles, posts, group } = props
+    
   return (
     <div className={styles.head}>
       <img
