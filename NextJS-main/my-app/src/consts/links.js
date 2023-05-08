@@ -13,9 +13,6 @@ export const testForTypeAttachment = (attachment) => {
   } else if(attachment?.type == 'video') {
     const url = attachment?.video?.image[attachment?.video?.image?.length - 1]?.url;
     return url
-  } else if(attachment?.type == 'audio') {
-    const url = attachment?.audio?.cover_image[attachment?.audio?.cover_image?.length - 1]?.url;
-    return url
   } else if(attachment?.type == 'doc') {
     const url = attachment?.doc?.preview?.photo?.sizes[attachment?.doc?.preview?.photo?.sizes?.length -1]?.url
     return url

@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TOKEN } from "@/consts/consts";
 import $ from "jquery";
-import { useDispatch } from "react-redux";
+
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
   const count = 100; // количество запрашиваемых постов за раз (граничение vk-api wall.get max 100)
-  const maxPosts = 100; // количество постов, которое нужно вывести в общем
+  const maxPosts = 300; // количество постов, которое нужно вывести в общем
   let offset = 0; // отступ постов от начала стены (для того чтобы получать больше 100 постов)
 
   let allPosts = []; // значение всех постов для их дальнейшей обработки в один массив
   let allProfiles = []; // значение всех пользователей, от которых были оставлены посты на стене 
-
+  let combinedArray = []
   try {
     while (allPosts.length < maxPosts) {
       const response = await $.ajax({
@@ -37,7 +37,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
       });                                                 //
       const filteredOwnersIds = [...new Set(ownerIds)];   //, а также удаление дубликатов
     
-      const combinedArray = allPosts.map((post) => { // объединяем данные о пользователе и посте в один объект info
+      combinedArray = allPosts.map((post) => { // объединяем данные о пользователе и посте в один объект info
         const profile = allProfiles.find(
           (profile) => post?.from_id == profile?.id
           );
@@ -79,9 +79,9 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
         return info 
       });
       offset += count;              // в случае если получено count постов то отступает 
-      return {posts: combinedArray, // от начала стены count постов и повторяем запрос, 
-      profiles: allProfiles}        // отступая от начала стены count постов
     }
+    return {posts: combinedArray, // от начала стены count постов и повторяем запрос, 
+    profiles: allProfiles}        // отступая от начала стены count постов
   } catch (error) {
     throw new Error(error);
   }
