@@ -32,3 +32,10 @@
     background-color: var(--border-cards-color);
     cursor: pointer;
 }
+
+@media (max-width: 800px) {
+    .bar {
+        width: 100%;
+        padding: 1rem 0 1rem 0;
+    }
+}
