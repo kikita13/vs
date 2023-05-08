@@ -5,12 +5,12 @@ const Post = (props) => {
   const {styles, posts} = props
 
   return (
-<div className={styles.body}>
-      <div className={styles.text}>{posts.text}</div>
+    <div className={styles.body}>
+      <div className={styles.text}>{posts.post_text}</div>
       <div className={styles.attachments}>
-        {posts.attachments.map((atach) => (
+        {posts.post_attachments?.map((atach) => (
           <img
-            key={posts.id}
+            key={posts.post_id}
             className={styles.img}
             src={testForTypeAttachment(atach)}
             alt={testForTypeAttachment(atach)?.toString()}

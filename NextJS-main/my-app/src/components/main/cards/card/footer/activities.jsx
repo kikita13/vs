@@ -8,15 +8,19 @@ const Activities = (props) => {
     <div className={styles.activities}>
       <div className={styles.icons}>
         <img className={styles.icon} src={ICONS[0].icon} alt="likes" />{" "}
-        {posts.likes.count}
+        {posts?.post_likes?.count}
       </div>
       <div className={styles.icons}>
         <img className={styles.icon} src={ICONS[1].icon} alt="comments" />{" "}
-        {posts.comments.count}
+        {posts?.post_comments?.count}
       </div>
       <div className={styles.icons}>
         <img className={styles.icon} src={ICONS[2].icon} alt="reposts" />{" "}
-        {posts.reposts.count}
+        {posts?.post_reposts?.count}
+      </div>
+      <div className={styles.icons}>
+        <img className={styles.icon} src={ICONS[4].icon} alt="views" />{" "}
+        {posts?.post_views?.count}
       </div>
     </div>
   );

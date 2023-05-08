@@ -7,7 +7,7 @@ export const fetchUser = createAsyncThunk("user/fetchUser", (user) => {
   const ids = user?.map(data => data?.id)
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: `https://api.vk.com/method/users.get?&user_ids=${ids?.join(',')}&access_token=${TOKEN}&v=5.131`,
+      url: `https://api.vk.com/method/users.get?&user_ids=${ids}&access_token=${TOKEN}&v=5.131`,
       method: "GET",
       dataType: "jsonp",
       success: (data) => {

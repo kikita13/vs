@@ -36,7 +36,7 @@ const groupSlice = createSlice({
     });
     builder.addCase(fetchGroup.fulfilled, (state, action) => {
       state.status = "Ответ получен";
-      state.group = action.payload.response[0];
+      state.group = action.payload.response ? action.payload.response[0] :null ;
       state.error = null;
     });
     

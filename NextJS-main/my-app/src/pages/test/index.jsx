@@ -1,15 +1,15 @@
-import Card from '@/components/main/cards/card/card';
-import { fetchGroup } from '@/store/slices/groupSlice';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const index = () => {
-    const dispatch = useDispatch()
-    const group = useSelector(state => state.group.group)
-
+    const posts = useSelector(state => state.posts.posts)
+    const group_ids = posts[0]?.post_copyHistoryOwnersIds
+    console.log(group_ids);
     return (
-        <Card/>
-    );
+        <div>
+            {}
+        </div>
+    )
 };
 
 export default index;

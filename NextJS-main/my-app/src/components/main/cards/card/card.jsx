@@ -5,12 +5,12 @@ import Footer from "./footer/footer";
 import styles from "@/styles/mainCard.module.css";
 
 const Card = (props) => {
-  const { posts, group } = props;
+  const { posts, profiles, group } = props;
   return (
     <div className={styles.card}>
-      <Head styles={styles} posts={posts} group={group} />
-      <Body styles={styles} posts={posts} group={group} />
-      <Footer styles={styles} posts={posts} group={group} />
+      <Head styles={styles} posts={posts} group={group} profiles={profiles} />
+      <Body styles={styles} posts={posts} group={group} profiles={profiles} />
+      <Footer styles={styles} posts={posts} group={group} profiles={profiles} />
     </div>
   );
 };

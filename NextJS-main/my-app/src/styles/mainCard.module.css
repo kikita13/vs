@@ -58,6 +58,7 @@
 }
 
 .attachments {
+    padding-top: .5em;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -67,6 +68,7 @@
 
 .img {
     border-radius: .5rem;
+    min-height: 150px;
     max-height: 150px;
     object-fit: contain;
 }
