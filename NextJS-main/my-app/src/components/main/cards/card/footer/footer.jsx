@@ -3,7 +3,7 @@ import Activities from "./activities";
 import Links from "./links";
 
 const Footer = (props) => {
-  const { styles, posts, group } = props;
+  const { styles, posts, group, groups } = props;
 
   return (
     <div className={styles.footer}>

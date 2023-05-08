@@ -11,7 +11,7 @@ const Links = (props) => {
         className={styles.icons}
         id={styles.target}
         onClick={() => {
-          openPost(posts);
+          openPost(posts.post_ownerId, posts.post_id);
         }}
       >
         <img className={styles.icon} src={ICONS[3].icon} alt="post" />

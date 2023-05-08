@@ -2,8 +2,8 @@ import { openPage } from "@/consts/links";
 import React from "react";
 
 const Head = (props) => {
-    const { styles, posts, profiles, group } = props
-    
+  const { styles, posts, group, groups } = props;
+
   return (
     <div className={styles.head}>
       <img
@@ -12,7 +12,7 @@ const Head = (props) => {
         onClick={() => {
           openPage(posts);
         }}
-      ></img>
+      />
       <div className={styles.info}>
         <div className={styles.name}>
           {posts.user_firstName

@@ -19,7 +19,6 @@ export const fetchGroups = createAsyncThunk("groups/fetchGroups",  (id) => {
   });
 });
 
-
 const initialState = {
   groups: [],
   status: null,
@@ -36,7 +35,7 @@ const groupsSlice = createSlice({
     });
     builder.addCase(fetchGroups.fulfilled, (state, action) => {
       state.status = "Ответ получен";
-      state.groups = action.payload.response ? action.payload.response[0] :null ;
+      state.groups = action.payload.response ? action.payload.response :null ;
       state.error = null;
     });
     

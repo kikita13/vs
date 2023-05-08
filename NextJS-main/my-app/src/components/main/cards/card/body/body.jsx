@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Repost from "./repost";
 import Post from "./post";
 
 const Body = (props) => {
-  const { styles, posts, group} = props;
-
+  const { styles, posts, group, groups} = props;
 
   if(posts.post_copyHistory) {
-    return <Repost styles={styles} posts={posts} group={group}/>
+
+    return <Repost styles={styles} posts={posts} group={group} groups={groups}/>
   } {
-    return <Post styles={styles} posts={posts}/>
+    return <Post styles={styles} posts={posts} groups={groups}/>
   }
 };
 

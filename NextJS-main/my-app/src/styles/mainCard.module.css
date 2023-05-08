@@ -11,6 +11,12 @@
     cursor: pointer;
 }
 
+.repostBody {
+    border-left: 2px solid var(--border-cards-color);
+    padding-left: 12px;
+    margin-top: 12px;
+}
+
 .info {
     padding-left: 10px;
 }

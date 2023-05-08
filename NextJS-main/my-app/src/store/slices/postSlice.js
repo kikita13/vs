@@ -4,7 +4,7 @@ import $ from "jquery";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
   const count = 100; // количество запрашиваемых постов за раз (граничение vk-api wall.get max 100)
-  const maxPosts = 300; // количество постов, которое нужно вывести в общем
+  const maxPosts = 110; // количество постов, которое нужно вывести в общем
   let offset = 0; // отступ постов от начала стены (для того чтобы получать больше 100 постов)
 
   let allPosts = []; // значение всех постов для их дальнейшей обработки в один массив

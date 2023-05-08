@@ -7,18 +7,19 @@ import { fetchGroups } from "@/store/slices/groupsSlice";
 const Main = (props) => {
   const posts = useSelector(state => state.posts.posts)
   const group = useSelector(state => state.group.group)
+  const groups = useSelector(state => state.groups.groups)
   const group_idss = posts[0]?.post_copyHistoryOwnersIds
   const dispath = useDispatch()
   useEffect(() => {
     dispath(fetchGroups(group_idss?.join(',')))
   },[posts])
-    console.log(group_idss?.join(','));
+
 
   return (
     <div className={styles.container}>
       <div className={styles.cards}>
         {posts?.map((data) => (
-          <Card key={data.post_date} posts={data} group={group} />
+          <Card key={data.post_date} posts={data} group={group} groups={groups} />
         ))}
       </div> 
     </div>
