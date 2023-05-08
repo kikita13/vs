@@ -5,7 +5,7 @@ import $ from "jquery";
 export const fetchGroup = createAsyncThunk("group/fetchGroup",  (id) => {
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: `https://api.vk.com/method/groups.getById?&group_id=${Math.abs(+id)}&extended=1&access_token=${TOKEN}&v=5.131`,
+      url: `https://api.vk.com/method/groups.getById?&group_ids=${id}&extended=1&access_token=${TOKEN}&v=5.131`,
       method: "GET",
       dataType: "jsonp",
       success: (data) => {

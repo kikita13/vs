@@ -31,7 +31,7 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
       allPosts.forEach((post) => {                        // // получение списка id пабликов из которых были сделаны репосты на стену
         if (post.copy_history) {                          //
           post.copy_history.forEach((history) => {        //
-            ownerIds.push(history.owner_id);              //
+            ownerIds.push(Math.abs(history.owner_id));              //
           });                                             //
         }                                                 //
       });                                                 //
@@ -41,8 +41,8 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
         const profile = allProfiles.find(
           (profile) => post?.from_id == profile?.id
           );
-          
-        const info = {
+
+          const info = {
           post_copyHistory: post?.copy_history,
           post_copyHistoryOwnersIds: filteredOwnersIds, // id групп из которых сделан репост (как поместить его не в каждый объект я хз)
           user_id: profile?.id,
