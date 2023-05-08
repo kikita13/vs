@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "@styles/main.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./cards/card/card";
-import { fetchGroup } from "@/store/slices/groupSlice";
+import { fetchGroups } from "@/store/slices/groupsSlice";
 
 const Main = (props) => {
   const posts = useSelector(state => state.posts.posts)
@@ -10,7 +10,7 @@ const Main = (props) => {
   const group_idss = posts[0]?.post_copyHistoryOwnersIds
   const dispath = useDispatch()
   useEffect(() => {
-    dispath(fetchGroup(group_idss?.join(',')))
+    dispath(fetchGroups(group_idss?.join(',')))
   },[posts])
     console.log(group_idss?.join(','));
 

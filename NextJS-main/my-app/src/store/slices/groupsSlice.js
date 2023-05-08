@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TOKEN } from "@/consts/consts";
 import $ from "jquery";
 
-export const fetchGroup = createAsyncThunk("group/fetchGroup",  (id) => {
+export const fetchGroups = createAsyncThunk("groups/fetchgroups",  (id) => {
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: `https://api.vk.com/method/groups.getById?&group_ids=${Math.abs(+id)}&extended=1&access_token=${TOKEN}&v=5.131`,
+      url: `https://api.vk.com/method/groups.getById?&group_ids=${id}&extended=1&access_token=${TOKEN}&v=5.131`,
       method: "GET",
       dataType: "jsonp",
       success: (data) => {
@@ -21,30 +21,30 @@ export const fetchGroup = createAsyncThunk("group/fetchGroup",  (id) => {
 
 
 const initialState = {
-  group: [],
+  groups: [],
   status: null,
   error: null,
 };
 
-const groupSlice = createSlice({
-  name: "group",
+const groupsSlice = createSlice({
+  name: "groups",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchGroup.pending, (state) => {
+    builder.addCase(fetchGroups.pending, (state) => {
       state.status = "Загрузка...";
       state.error = null;
     });
-    builder.addCase(fetchGroup.fulfilled, (state, action) => {
+    builder.addCase(fetchGroups.fulfilled, (state, action) => {
       state.status = "Ответ получен";
-      state.group = action.payload.response ? action.payload.response[0] :null ;
+      state.groups = action.payload.response ? action.payload.response[0] :null ;
       state.error = null;
     });
     
-    builder.addCase(fetchGroup.rejected, (state, action) => {
+    builder.addCase(fetchGroups.rejected, (state, action) => {
       state.status = "Ошибка";
       state.error = action.error.message;
     });
   },
 });
 
-export const groupReducer = groupSlice.reducer;
+export const groupsReducer = groupsSlice.reducer;
