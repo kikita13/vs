@@ -12,6 +12,6 @@
 
 @media (max-width: 800px) {
     .col {
-        display: block;
+        flex-direction: column;
     }
 }
