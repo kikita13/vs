@@ -120,9 +120,18 @@
         gap: .5em;
     }
     .activities{
+        gap: .5em;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
     }
     .links {
+        gap: .5em;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .icons {
+        margin: 0;
     }
 }
