@@ -19,11 +19,13 @@ const Main = (props) => {
     dispatch(fetchGroups(group_idss?.join(',')));
     dispatch(fetchComments(posts))
   },[posts])
-  
+    
   useEffect(() => {
     const ids = comments.map(comment => comment?.from_id)
-    
-    dispatch(fetchUser(ids.filter(Boolean).join(','))) 
+    setTimeout(() => {
+
+      dispatch(fetchUser(ids.filter(Boolean).join(','))) 
+    },2000)
   },[comments])
   
   
