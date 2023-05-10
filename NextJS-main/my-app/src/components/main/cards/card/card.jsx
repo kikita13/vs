@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "./head";
 import Body from "./body/body";
 import Footer from "./footer/footer";
 import styles from "@/styles/mainCard.module.css";
+import Comments from "./comments";
 
 const Card = (props) => {
-  const { posts, profiles, group, groups } = props;
+  const { posts, group, groups, comments, users } = props;
+
   return (
     <div className={styles.card}>
-      <Head styles={styles} posts={posts} group={group} groups={groups}/>
-      <Body styles={styles} posts={posts} group={group} profiles={profiles} groups={groups}/>
-      <Footer styles={styles} posts={posts} group={group} profiles={profiles} groups={groups}/>
+      <Head 
+        styles={styles} 
+        posts={posts} 
+        group={group} 
+        groups={groups} />
+      <Body
+        styles={styles}
+        posts={posts}
+        group={group}
+        groups={groups}
+      />
+      <Footer
+        styles={styles}
+        posts={posts}
+        group={group}
+        groups={groups}
+      />
+      <Comments
+        group={group}
+        users={users}
+        styles={styles}
+        posts={posts}
+        comments={comments}
+      />
     </div>
   );
 };

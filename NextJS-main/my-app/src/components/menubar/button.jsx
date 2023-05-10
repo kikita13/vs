@@ -13,7 +13,6 @@ const Button = (props) => {
     } else {
       dispatch(fetchPosts(id));
       dispatch(fetchGroup(id))
-
     }
   };
 

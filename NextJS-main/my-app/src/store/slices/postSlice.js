@@ -4,7 +4,7 @@ import $ from "jquery";
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
   const count = 100; // количество запрашиваемых постов за раз (граничение vk-api wall.get max 100)
-  const maxPosts = 110; // количество постов, которое нужно вывести в общем
+  const maxPosts = 1000; // количество постов, которое нужно вывести в общем
   let offset = 0; // отступ постов от начала стены (для того чтобы получать больше 100 постов)
 
   let allPosts = []; // значение всех постов для их дальнейшей обработки в один массив
@@ -76,14 +76,14 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
 
       }
       const ownerIds = [];                                //
-      allPosts.forEach((post) => {                        // // получение списка id пабликов из которых были сделаны репосты на стену
+      allPosts.forEach((post) => {                        // получение списка id пабликов из которых были сделаны репосты на стену
         if (post.copy_history) {                          //
           post.copy_history.forEach((history) => {        //
-            ownerIds.push(Math.abs(history.owner_id));              //
+            ownerIds.push(Math.abs(history.owner_id));    //
           });                                             //
         }                                                 //
       });                                                 //
-      filteredOwnersIds = [...new Set(ownerIds)];   //, а также удаление дубликатов
+      filteredOwnersIds = [...new Set(ownerIds)];         //, а также удаление дубликатов
     
       combinedArray = allPosts.map((post) => { // объединяем данные о пользователе и посте в один объект info
         const profile = allProfiles.find(

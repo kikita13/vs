@@ -8,6 +8,7 @@
 .image {
     border-radius: 50%;
     max-width: 40px;
+    max-height: 40px;
     cursor: pointer;
 }
 
@@ -22,9 +23,13 @@
 }
 
 .name {
+    font-size: 13px;
     color: var(--text-color-headers)
 }
-
+.comments{
+    border-top: 1px solid var(--border-cards-color);
+    font-size: 13px;
+}
 .date {
     padding-top: 5px;
     font-weight: 400;
@@ -91,7 +96,7 @@
     border: 1px solid var(--border-cards-color);
     border-radius: 1rem;
     background-color: var(--bgcolor-secondary);
-    padding: 16px 20px 0px 20px;
+    padding: 16px 20px 10px 20px;
 }
 
 .activities {
@@ -111,6 +116,18 @@
 
 #target:hover {
     font-size: 16px;
+}
+
+.comment {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    margin-left: 20px;
+    border-bottom: 1px solid var(--border-cards-color);
+}
+
+.comment:last-child {
+    border: none;
 }
 
 @media (max-width: 870px) {

@@ -11,15 +11,15 @@ const Repost = (props) => {
   const repostInfo = { ...repInf, owner_id: repInf?.id };
   const repost = posts.post_copyHistory[0];
   console.log(repostInfo.id);
-  return (
-    <div className={styles.repostBody}>
+  return (<>
       <div className={styles.text}>{SPLIT_TEXT(posts.post_text)}</div>
+    <div className={styles.repostBody}>
         <div className={styles.head}>
           <img
             className={styles.image}
             src={repostInfo.photo_50}
             onClick={() => {openPage(+repostInfo.id)}}
-          />
+            />
           <div className={styles.info}>
             <div className={styles.name}>{repostInfo.name}</div>
             <div className={styles.date}>
@@ -33,14 +33,15 @@ const Repost = (props) => {
       <div className={styles.attachments}>
         {posts.post_copyHistory[0].attachments?.map((atach, index) => (
           <img
-            key={index}
-            className={styles.img}
-            src={testForTypeAttachment(atach)}
-            alt={testForTypeAttachment(atach)?.toString()}
+          key={index}
+          className={styles.img}
+          src={testForTypeAttachment(atach)}
+          alt={testForTypeAttachment(atach)?.toString()}
           />
-        ))}
+          ))}
       </div>
     </div>
+          </>
   );
 };
 

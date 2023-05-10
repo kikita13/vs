@@ -6,7 +6,7 @@ export const openPage = (data) => {
   {
     openLink(`https://vk.com/club${Math.abs(data.post_ownerId)}`);
   }  else if (!data.post_ownerId)
-  {openLink(`https://vk.com/club${Math.abs(data)}`)
+  {openLink(`https://vk.com/${data}`)
   };
 };
 export const openPost = (owner_id, post_id) => {
