@@ -2,11 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TOKEN } from "@/consts/consts";
 import $ from "jquery";
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (id) => {
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (props) => {
+  const {id, maxPosts} = props
   const count = 100; // количество запрашиваемых постов за раз (граничение vk-api wall.get max 100)
-  const maxPosts = 1000; // количество постов, которое нужно вывести в общем
+  // количество постов, которое нужно вывести в общем
   let offset = 0; // отступ постов от начала стены (для того чтобы получать больше 100 постов)
-
+console.log(maxPosts);
   let allPosts = []; // значение всех постов для их дальнейшей обработки в один массив
   let allProfiles = []; // значение всех пользователей, от которых были оставлены посты на стене 
   let combinedArray = [];

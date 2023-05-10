@@ -21,7 +21,9 @@ const Main = (props) => {
   },[posts])
   
   useEffect(() => {
-    dispatch(fetchUser(comments.map(comment => comment?.from_id).join(','))) 
+    const ids = comments.map(comment => comment?.from_id)
+    
+    dispatch(fetchUser(ids.filter(Boolean).join(','))) 
   },[comments])
   
   

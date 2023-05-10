@@ -4,24 +4,27 @@ import $ from 'jquery';
 
 export const fetchComments = createAsyncThunk("comments/fetchComments", async (posts) => {
   const count = 100;
-  const promises = posts.map((post) => {
+  const promises = posts.map((post, index) => {
     return new Promise((resolve, reject) => {
-      $.ajax({
-        url: `https://api.vk.com/method/wall.getComments?owner_id=${post.post_ownerId}&post_id=${post.post_id}&need_likes=1&count=${count}&extended=1&thread_items_count=8&access_token=${TOKEN}&v=5.131`,
-        method: "GET",
-        dataType: "jsonp",
-        success: (data) => {
-          const newComments = data?.response?.items;
-          const infoProfiles = data?.response?.profiles;
-          const infoGroups = data?.response?.groups;
-          resolve({ newComments, infoProfiles, infoGroups }); // Возвращаем объект с комментариями, информацией о профилях и информацией о группах
-        },
-        error: (error) => {
-          reject(error);
-        },
-      });
+      setTimeout(() => {
+        $.ajax({
+          url: `https://api.vk.com/method/wall.getComments?owner_id=${post.post_ownerId}&post_id=${post.post_id}&need_likes=1&count=${count}&extended=1&thread_items_count=8&access_token=${TOKEN}&v=5.131`,
+          method: "GET",
+          dataType: "jsonp",
+          success: (data) => {
+            const newComments = data?.response?.items;
+            const infoProfiles = data?.response?.profiles;
+            const infoGroups = data?.response?.groups;
+            resolve({ newComments, infoProfiles, infoGroups }); // Возвращаем объект с комментариями, информацией о профилях и информацией о группах
+          },
+          error: (error) => {
+            reject(error);
+          },
+        });
+      }, 100 * index); // Задержка на 1 секунду между запросами (можете изменить значение по желанию)
     });
   });
+  
 
   const results = await Promise.all(promises);
   const allComments = results.flatMap((result) => result.newComments); // Объединяем массивы комментариев в один

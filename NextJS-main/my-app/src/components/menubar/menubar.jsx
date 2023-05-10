@@ -11,6 +11,7 @@ const Menubar = (props) => {
   const [valueFirstName, setValueFirstName] = useState("");
   const [valueLastName, setValueLastName] = useState("");
   const [valueCity, setValueCity] = useState("");
+  const [maxPosts, setMaxPosts] = useState("");
   return (
     <div className={styles.bar}>
       <Input
@@ -20,10 +21,10 @@ const Menubar = (props) => {
         setValue={setValueId}
       />
       <Input
-        text="First name"
+        text="Max posts"
         styles={styles}
-        valueFirstName={valueFirstName}
-        setValue={setValueFirstName}
+        maxPosts={maxPosts}
+        setValue={setMaxPosts}
       />
       <Input
         text="Last name"
@@ -50,6 +51,7 @@ const Menubar = (props) => {
         lastName={valueLastName}
         city={valueCity}
         id={valueId}
+        maxPosts={maxPosts}
         setPosts={setPosts}
         setGroup={setGroup}
       />

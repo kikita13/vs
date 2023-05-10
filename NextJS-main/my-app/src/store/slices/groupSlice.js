@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { TOKEN } from "@/consts/consts";
 import $ from "jquery";
 
-export const fetchGroup = createAsyncThunk("group/fetchGroup",  (id) => {
+export const fetchGroup = createAsyncThunk("group/fetchGroup",  (props) => {
+  const {id, maxPosts} = props
   return new Promise((resolve, reject) => {
     $.ajax({
       url: `https://api.vk.com/method/groups.getById?&group_ids=${Math.abs(+id)}&extended=1&access_token=${TOKEN}&v=5.131`,
