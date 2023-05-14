@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Head from "./head";
+import Head from "./head/head";
 import Body from "./body/body";
 import Footer from "./footer/footer";
 import styles from "@/styles/mainCard.module.css";
-import Comments from "./comments";
+import Comments from "./comments/comments";
 
 const Card = (props) => {
   const { posts, group, groups, comments, users } = props;

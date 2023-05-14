@@ -21,7 +21,7 @@ export const fetchComments = createAsyncThunk("comments/fetchComments", async (p
             reject(error);
           },
         });
-      }, 100 * index); // Задержка на 1 секунду между запросами (можете изменить значение по желанию)
+      }, 200 * index); // Задержка на 1 секунду между запросами (можете изменить значение по желанию)
     });
   });
   

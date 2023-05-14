@@ -18,13 +18,19 @@ const Main = (props) => {
   useEffect(() => {
     dispatch(fetchGroups(group_idss?.join(',')));
     dispatch(fetchComments(posts))
-  },[posts])
+  },[posts]) 
     
   useEffect(() => {
-    const ids = comments.map(comment => comment?.from_id)
+    const ids = comments.map(comment => {
+      let allIds = []
+      const comOwner = comment?.from_id
+      const threadOwner = comment?.thread?.items?.map(thread => thread?.from_id)
+      allIds.push(comOwner,threadOwner)
+      return allIds
+    })
     setTimeout(() => {
 
-      dispatch(fetchUser(ids.filter(Boolean).join(','))) 
+      dispatch(fetchUser(ids.filter(Boolean))) 
     },2000)
   },[comments])
   
